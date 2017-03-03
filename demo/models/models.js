@@ -206,7 +206,8 @@ export const dropList={
     }]
   },{
     name:'profile',
-    icon:require('../styles/images/usr.jpg'),
+    // icon:require('../styles/images/usr.jpg'),
+    icon:'user',
     animate:'right',
     msg:'4',
     open:'',

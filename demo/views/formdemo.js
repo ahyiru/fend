@@ -5,6 +5,7 @@ import {Form,FormItem,Items,Item,Row,Col,Input,Button,Table,tools} from 'yrui';
 const $fetch=tools.$fetch;
 const $notify=tools.$notify;
 const $timer=tools.$timer;
+const $validate=tools.$validate;
 
 // $timer(document.body);
 // $notify.start();
@@ -20,46 +21,6 @@ $fetch.post('/test2',{hhh:'h111111'}).then((data)=>{
   console.log(error);
 });*/
 
-const yajax=(opt)=>{
-  opt=opt||{};
-  opt.method=opt.method||'GET';
-  opt.url=opt.url||'';
-  opt.data=opt.data||null;
-  opt.async=opt.ansync||true;
-  opt.dataType=opt.dataType||'text';
-  opt.contentType=opt.contentType||'application/x-www-form-urlencoded';
-  opt.beforeSend=opt.beforeSend||function(){};
-  opt.success=opt.success||function(){};
-  opt.error=opt.error||function(){};
-  opt.beforeSend();
-
-  let xhr=null;
-  XMLHttpRequest?(xhr=new XMLHttpRequest()):(xhr=new ActiveXObject('Microsoft.XMLHTTP'));
-
-  if(opt.method.toUpperCase()==='GET'){
-    xhr.open(opt.method,opt.url,opt.async);
-    xhr.send(null);
-  }else if(opt.method.toUpperCase()==='POST'){
-    xhr.open(opt.method,opt.url,opt.async);
-    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=utf-8');
-    xhr.send(opt.data);
-  }
-  xhr.onreadystatechange=function(){
-    if(xhr.readyState==4){
-      if(xhr.status>=200&&xhr.status<300||xhr.status==304){
-        if(opt.success){
-          opt.success(xhr.responseText);
-        }
-      }else{
-         if(opt.error){
-           opt.error(xhr.status);
-         }
-      }
-    }
-  };
-};
-
-// yajax({url:'/table/info',success:function(data){console.log(data)},error:function(err){console.log(err)}});
 
 const formData=[];
 for(let i=0;i<12;i++){
@@ -119,8 +80,9 @@ export default class FormDemo extends React.Component<any,any> {
     let form=document.getElementsByTagName('form')[0];
     let input=form.getElementsByTagName('input'),data=[];
     for(let i=0,l=input.length;i<l;i++){
-      if(input[i].value==''){
-        formData[i].inputOpt.error='请填写完整！';
+      let validate=$validate.isRequired(input[i].value);
+      if(!validate.ok){
+        formData[i].inputOpt.error=validate.info;
         this.setState({
           formData:formData
         });

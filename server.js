@@ -18,6 +18,22 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 app.set('port', process.env.PORT || PORT);
 
+var cors=require('cors');
+var logger=require('morgan');
+var bodyParser=require('body-parser');  // 数据解析
+app.use(cors());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+if(app.get('env')==='production'){
+  app.use(function(req,res,next) {
+    var protocol=req.get('x-forwarded-proto');
+    protocol=='https'?next():res.redirect('https://'+req.hostname+req.url);
+  });
+}
+
+var rest=require('./demo/servers/restful')(app);
+
 app.listen(app.get('port'),(err)=>{
   if (err) {
     console.log(err);

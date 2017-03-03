@@ -30,7 +30,7 @@ let nav=[{
   default:'false'
 },{
   key:'hideRightTogbar',
-  expr:'是否显示有侧边栏切换按钮',
+  expr:'是否显示右侧边栏切换按钮',
   type:'boolean',
   values:'true/false',
   default:'false'
@@ -67,6 +67,12 @@ let droplist=[{
   default:'-'
 },{
   key:'icon',
+  expr:'下拉菜单图标',
+  type:'string',
+  values:'-',
+  default:'-'
+},{
+  key:'img',
   expr:'下拉菜单图标',
   type:'string',
   values:'-',

@@ -1,6 +1,13 @@
 import * as React from 'react';
+import {tools} from 'yrui';
+const $fetch=tools.$fetch;
+const $validate=tools.$validate;
 
-import './layout.less';
+// let phone=$validate.chkPhone(159);
+
+import {test} from '../servers/service';
+
+// test();
 
 import {Row,Col,Items,Item,Table} from 'yrui';
 
