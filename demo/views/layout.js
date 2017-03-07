@@ -84,7 +84,7 @@ export default class Layout extends React.Component<any,any> {
               <code>
                 <h2>加载等待</h2>
                 <b>用法:</b>loading(ele)
-                <p>ele: dom节点</p>
+                <p>ele: dom节点。默认为document.body</p>
                 <h2>格式化文本</h2>
                 <b>用法:</b>formatTxt(str)
                 <p>str:需要格式化的文本</p>

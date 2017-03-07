@@ -1,6 +1,6 @@
 import {tools} from 'yrui';
 
-const $storage=tools.$storage;
+const {$storage,addClass}=tools;
 
 export const isAuth=()=>{
 	return $storage.get('token')?true:false;;
@@ -34,4 +34,13 @@ export const clearAll=()=>{
 	$storage.clear();
 };
 
-
+export const getDefault=()=>{
+	if(navigator.cookieEnabled){
+		let theme=$storage.get('theme')||'';
+		addClass(document.body,theme);
+		let collapse=$storage.get('collapse')||'';
+		addClass(document.body,collapse);
+	}else{
+		console.log('你处于隐私模式!');
+	}
+};

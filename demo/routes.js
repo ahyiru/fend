@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, IndexRoute, Redirect, IndexRedirect } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import Frame from './base';
 
 import Layout from './views/layout';

@@ -4,64 +4,19 @@ import {Main,Brand,SideBar,RightBar,Nav,Tabs,Tabpage,List,tools} from 'yrui';
 
 import {sidebarMenu,rightbarTabs,rightbarTabLists,dropList,projectList} from './models/models';
 
-let getCurrent=tools.getCurrent;
-let getBreadcrumb=tools.getBreadcrumb;
-let addClass=tools.addClass;
 
-let storage=tools.$storage;
+const {getCurrent,getBreadcrumb,addClass,$storage}=tools;
 
-/*if(navigator.cookieEnabled){
-  let theme=storage.get('theme')||'';
-  addClass(document.body,theme);
-  let collapse=storage.get('collapse')||'';
-  addClass(document.body,collapse);
-}else{
-  console.log('你处于隐私模式!');
-}*/
-
-const getMenu=()=>{
-  let str=location.hash.match(/#(\S+)\?/)||location.hash.match(/#(\S+)/);
-  // let str=location.pathname;
-  let menu=getCurrent(sidebarMenu,str);
-  let breadcrumb=getBreadcrumb(sidebarMenu,str);
-  return {
-    menu:menu,
-    breadcrumb:breadcrumb,
-  }
-};
+import {getDefault} from './servers/storage';
 
 export default class Frame extends Component {
-	state={
-    menu:getMenu().menu,
-    breadcrumb:getMenu().breadcrumb,
-  };
-  static contextTypes={
-    router:React.PropTypes.object
-  };
-  componentWillMount=()=>{
-    /*if(!isAuth()){
-      this.context.router.push('/user/login');
-      return;
-    }*/
-    window.addEventListener('hashchange',this.hashChg,false);
-  };
-  componentDidMount=()=>{
-    
-  };
-  //hashchange
-  hashChg=()=>{
-    document.documentElement.scrollTop?(document.documentElement.scrollTop=0):(document.body.scrollTop=0);
-    this.setState({
-      menu:getMenu().menu,
-      breadcrumb:getMenu().breadcrumb,
-    });
-  };
-  componentWillUnmount=()=>{
-    window.removeEventListener('hashchange',this.hashChg,false);
-  };
 
   render() {
-  	const {breadcrumb,menu}=this.state;
+    getDefault();
+  	document.documentElement.scrollTop?(document.documentElement.scrollTop=0):(document.body.scrollTop=0);
+    const str=location.hash.match(/#(\S+)\?/)||location.hash.match(/#(\S+)/);
+    const menu=getCurrent(sidebarMenu,str);
+    const breadcrumb=getBreadcrumb(sidebarMenu,str);
     return (
       <div>
         <header>
