@@ -4,6 +4,8 @@
 
 ### [前端知识点总结](https://github.com/ahyiru/react-ui-demo/blob/master/doc/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9.md)
 
+### 前端交流群：621973872
+
 ### 安装 `$ npm i yrui`.
 
 ## 运行demo
@@ -34,7 +36,6 @@ $ npm start 		//默认端口8086
 
 4. 打开浏览器，访问: [http://localhost:8086/](http://localhost:8086/)
 
-### 前端交流群：621973872
 
 #### 持续更新中...
 

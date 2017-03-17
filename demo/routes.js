@@ -17,6 +17,13 @@ import EchartDemo from './views/echartdemo';
 import InputDemo from './views/inputdemo';
 import FormDemo from './views/formdemo';
 
+import ItemsDemo from './views/itemsdemo';
+import ListDemo from './views/listdemo';
+import TabsDemo from './views/tabsdemo';
+import RadiocheckboxDemo from './views/radiocheckboxdemo';
+import SelectswitchDemo from './views/selectswitchdemo';
+import TextareabadgeDemo from './views/textareabadgedemo';
+
 
 export default (
   <Route path="/" component={Frame}>
@@ -35,6 +42,13 @@ export default (
     <Route path="component/echart" component={EchartDemo} />
     <Route path="component/input" component={InputDemo} />
     <Route path="component/form" component={FormDemo} />
+
+    <Route path="component/items" component={ItemsDemo} />
+    <Route path="component/list" component={ListDemo} />
+    <Route path="component/tabs" component={TabsDemo} />
+    <Route path="component/radio-checkbox" component={RadiocheckboxDemo} />
+    <Route path="component/select-switch" component={SelectswitchDemo} />
+    <Route path="component/textarea-badge" component={TextareabadgeDemo} />
 
     <Route path="tools/tool1" component={FormDemo} />
     <Route path="tools/tool2" component={FormDemo} />

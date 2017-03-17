@@ -61,11 +61,11 @@ export default class ListDemo extends React.Component<any,any> {
       <Items>
         <Item>
           <h2>list配置</h2>
-          <Table thead={thead} tbody={list} noBorder={true} />
+          <Table thead={thead} tbody={list} />
         </Item>
         <Item>
           <h2>listContent配置</h2>
-          <Table thead={thead} tbody={listContent} noBorder={true} />
+          <Table thead={thead} tbody={listContent} />
         </Item>
       </Items>
     )

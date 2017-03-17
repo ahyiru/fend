@@ -74,6 +74,37 @@ export const sidebarMenu=[{
   open:''
 },{
   url:'javascript:;',
+  title:'其他',
+  leftIcon:'github-alt',
+  rightIcon:'angle-right',
+  open:'',
+  subMenu:[{
+    url:'/component/items',
+    icon:'arrow-right',
+    title:'items列表'
+  },{
+    url:'/component/list',
+    icon:'arrow-right',
+    title:'list列表'
+  },{
+    url:'/component/tabs',
+    icon:'arrow-right',
+    title:'tabs页签'
+  },{
+    url:'/component/radio-checkbox',
+    icon:'arrow-right',
+    title:'单选、多选'
+  },{
+    url:'/component/select-switch',
+    icon:'arrow-right',
+    title:'下拉选择、切换'
+  },{
+    url:'/component/textarea-badge',
+    icon:'arrow-right',
+    title:'textarea、标记'
+  }],
+},{
+  url:'javascript:;',
   title:'工具插件',
   leftIcon:'github-alt',
   rightIcon:'angle-right',

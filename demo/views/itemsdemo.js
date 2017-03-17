@@ -25,11 +25,11 @@ export default class ItemsDemo extends React.Component<any,any> {
       <Items>
         <Item>
           <h2>items配置</h2>
-          <Table thead={thead} tbody={items} noBorder={true} />
+          <Table thead={thead} tbody={items} />
         </Item>
         <Item>
           <h2>item配置</h2>
-          <Table thead={thead} tbody={item} noBorder={true} />
+          <Table thead={thead} tbody={item} />
         </Item>
       </Items>
     )
