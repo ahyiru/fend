@@ -8,7 +8,7 @@ var compression=require('compression');
 
 var app = express();
 
-var config=require('./node/config');
+var config=require('./config');
 
 app.set('host', process.env.IP || config.HOST);
 app.set('port', process.env.PORT || config.PRO_PORT);

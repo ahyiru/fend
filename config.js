@@ -9,6 +9,7 @@ module.exports = {
   WEIXIN_TOKENURL:process.env.WEIXIN_TOKENURL || 'https://api.weixin.qq.com/sns/oauth2/access_token',
   WEIXIN_INFOURL:process.env.WEIXIN_INFOURL || 'https://api.weixin.qq.com/sns/userinfo',
   PORT:process.env.PORT || 8086,
+  PRO_PORT:process.env.PRO_PORT||9001,
   HOST:process.env.HOST || 'http://localhost/',
   SERVICE_HOST:process.env.SERVICE_HOST || 'http://localhost:18080/',
 
