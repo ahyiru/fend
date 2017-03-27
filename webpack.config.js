@@ -6,9 +6,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var appName=require('./package').name;
 
-// var src='/demo';
-const src = path.resolve(process.cwd(), 'demo');
-const nodeModules = path.resolve(process.cwd(), 'node_modules');
+var src='./demo';
+var src='./node_modules';
+// const src = path.resolve(process.cwd(), 'demo');
+// const nodeModules = path.resolve(process.cwd(), 'node_modules');
 
 module.exports = {
   context: src,

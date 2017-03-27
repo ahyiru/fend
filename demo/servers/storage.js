@@ -1,8 +1,8 @@
 import {tools} from 'yrui';
 
-const {$storage,addClass}=tools;
+const {$storage,hasClass,addClass}=tools;
 
-export const isAuth=()=>{
+export const isAuthed=()=>{
 	return $storage.get('token')?true:false;;
 };
 
@@ -39,7 +39,8 @@ export const getDefault=()=>{
 		let theme=$storage.get('theme')||'';
 		addClass(document.body,theme);
 		let collapse=$storage.get('collapse')||'';
-		addClass(document.body,collapse);
+		let isH=hasClass(document.body,'horizontal')||hasClass(document.body,'h-collapse');
+		!isH&&addClass(document.body,collapse);
 	}else{
 		console.log('你处于隐私模式!');
 	}

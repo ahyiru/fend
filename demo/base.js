@@ -4,14 +4,30 @@ import {Main,Brand,SideBar,RightBar,Nav,Tabs,Tabpage,List,tools} from 'yrui';
 
 import {sidebarMenu,rightbarTabs,rightbarTabLists,dropList,projectList} from './models/models';
 
+const {getCurrent,getBreadcrumb,$fetch,$storage}=tools;
 
-const {getCurrent,getBreadcrumb,addClass,$storage}=tools;
+import {isAuthed,getDefault,getToken} from './servers/storage';
 
-import {getDefault} from './servers/storage';
+const loginInfo={
+  loginUrl:'#/user/login',
+  signupUrl:'#/user/signup',
+};
 
 export default class Frame extends Component {
-
+  componentDidMount=()=>{
+    const headers={
+      'Content-Type':'application/json',
+      'Authorization':'YIRU '+getToken(),
+    };
+    $fetch.get('/info/me',{headers:headers}).then((data)=>{
+      console.log(data);
+    }).catch(e => console.log('error:'+e));
+  };
   render() {
+    let login=null;
+    if(!isAuthed()){
+      login=loginInfo;
+    }
     getDefault();
   	document.documentElement.scrollTop?(document.documentElement.scrollTop=0):(document.body.scrollTop=0);
     const str=location.hash.match(/#(\S+)\?/)||location.hash.match(/#(\S+)/);
@@ -22,7 +38,7 @@ export default class Frame extends Component {
         <header>
           <div className="y-header">
             <Brand title="React" subtitle="UI Demo" logo={false} />
-            <Nav dropList={dropList} hideRightTogbar={false} />
+            <Nav dropList={dropList} hideRightTogbar={false} login={login} />
           </div>
         </header>
         <aside>
@@ -41,7 +57,7 @@ export default class Frame extends Component {
             </Tabs>
           </RightBar>
         </aside>
-        <Main breadcrumb={breadcrumb} hidePagetitle={false}>
+        <Main breadcrumb={breadcrumb} hidePagetitle={true}>
           {this.props.children}
         </Main>
       </div>

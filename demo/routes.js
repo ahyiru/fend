@@ -24,35 +24,53 @@ import RadiocheckboxDemo from './views/radiocheckboxdemo';
 import SelectswitchDemo from './views/selectswitchdemo';
 import TextareabadgeDemo from './views/textareabadgedemo';
 
+import User from './auth/user';
+import Login from './auth/login';
+import Signup from './auth/signup';
+import WeixinAuth from './auth/weixin';
+
+import ErrorPage from './auth/weixin';
 
 export default (
-  <Route path="/" component={Frame}>
+    <Route>
+        <Route path="/" component={Frame}>
 
-    <IndexRoute component={Layout} />
+            <IndexRoute component={Layout} />
 
-    <Route path="base/head" component={HeadDemo} />
-    <Route path="base/aside" component={AsideDemo} />
-    <Route path="base/main" component={MainDemo} />
+            <Route path="base/head" component={HeadDemo} />
+            <Route path="base/aside" component={AsideDemo} />
+            <Route path="base/main" component={MainDemo} />
 
-    <Route path="component/col" component={ColDemo} />
-    <Route path="component/color" component={Color} />
-    <Route path="component/button" component={ButtonDemo} />
-    <Route path="component/panel" component={PanelDemo} />
-    <Route path="component/table" component={TableDemo} />
-    <Route path="component/echart" component={EchartDemo} />
-    <Route path="component/input" component={InputDemo} />
-    <Route path="component/form" component={FormDemo} />
+            <Route path="component/col" component={ColDemo} />
+            <Route path="component/color" component={Color} />
+            <Route path="component/button" component={ButtonDemo} />
+            <Route path="component/panel" component={PanelDemo} />
+            <Route path="component/table" component={TableDemo} />
+            <Route path="component/echart" component={EchartDemo} />
+            <Route path="component/input" component={InputDemo} />
+            <Route path="component/form" component={FormDemo} />
 
-    <Route path="component/items" component={ItemsDemo} />
-    <Route path="component/list" component={ListDemo} />
-    <Route path="component/tabs" component={TabsDemo} />
-    <Route path="component/radio-checkbox" component={RadiocheckboxDemo} />
-    <Route path="component/select-switch" component={SelectswitchDemo} />
-    <Route path="component/textarea-badge" component={TextareabadgeDemo} />
+            <Route path="component/items" component={ItemsDemo} />
+            <Route path="component/list" component={ListDemo} />
+            <Route path="component/tabs" component={TabsDemo} />
+            <Route path="component/radio-checkbox" component={RadiocheckboxDemo} />
+            <Route path="component/select-switch" component={SelectswitchDemo} />
+            <Route path="component/textarea-badge" component={TextareabadgeDemo} />
 
-    <Route path="tools/tool1" component={FormDemo} />
-    <Route path="tools/tool2" component={FormDemo} />
-    <Route path="tools/tool3" component={FormDemo} />
+            <Route path="tools/tool1" component={FormDemo} />
+            <Route path="tools/tool2" component={FormDemo} />
+            <Route path="tools/tool3" component={FormDemo} />
+        </Route>
 
-  </Route>
+        <Route path="/user" component={User}>
+            <Route path="login" component={Login} />
+            <Route path="signup" component={Signup} />
+        </Route>
+
+        <Route path="/user/weixin" component={WeixinAuth} />
+
+        <Route path="/404" component={ErrorPage} />
+
+        <Route path="*" onEnter={(params,replace:Function)=>replace('/404')} />
+    </Route>
 );

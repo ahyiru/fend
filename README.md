@@ -31,7 +31,7 @@ $ yarn install 或 cnpm i
 
 3. 运行项目:
 `
-$ npm start 		//默认端口8086
+$ npm(yarn) start 		//默认端口8086
 `
 
 4. 打开浏览器，访问: [http://localhost:8086/](http://localhost:8086/)
